@@ -48,8 +48,23 @@ app.post("/jogos/add", (req, res) => {
   res.status(201).send({
     message: `Jogo ${jogo.nome} cadastrado com sucesso!`,
     data: jogo
-  })
-})
+  });
+});
+
+app.put("/jogos/edit/:id", (req, res) => {
+  const jogoEdit = req.body;
+  const id = req.params.id -1 ;
+  
+  listaJogos[id] = {
+    ...listaJogos[id],
+    ...jogoEdit
+  }
+
+  res.send({
+    message: `O jogo ${listaJogos[id].nome} foi atualizado com sucesso!`,
+    data: listaJogos[id]
+  });
+});
 
 app.listen(port, () => {
   console.log(`O app está rodando em: http://localhost:${port}`);
