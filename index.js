@@ -66,6 +66,16 @@ app.put("/jogos/edit/:id", (req, res) => {
   });
 });
 
+app.delete("/jogos/delete/:id", (req, res) => {
+  const id = req.params.id -1 ;
+  const jogo = listaJogos[id];
+  
+  listaJogos.splice(id, 1);
+  res.send({
+    message: `O jogo ${jogo.nome} foi excluido com sucesso! `
+  });
+});
+
 app.listen(port, () => {
   console.log(`O app está rodando em: http://localhost:${port}`);
 });
