@@ -61,7 +61,7 @@ router.put("/edit/:id", (req, res) => {
 
   res.send({
     message: `O jogo ${listaJogos[index].titulo} foi atualizado com sucesso!`,
-    data: listaJogos[id]
+    data: listaJogos[index]
   });
 });
 
