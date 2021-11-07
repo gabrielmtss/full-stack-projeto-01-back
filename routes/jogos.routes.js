@@ -33,8 +33,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const id = req.params.id -1 ;
-  res.send(listaJogos[id]);
+  const idParam = req.params.id;
+  const jogo = listaJogos.find(jogo => jogo.id == idParam);
+  res.send(jogo);
 });
 
 router.post("/add", (req, res) => {
@@ -66,7 +67,6 @@ router.put("/edit/:id", (req, res) => {
 
 router.delete("/delete/:id", (req, res) => {
   const idParam = req.params.id;
-  const jogo = listaJogos[id];
 
   const index = listaJogos.findIndex(jogo => jogo.id == idParam);
 
